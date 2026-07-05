@@ -17,7 +17,7 @@ networks = readLines("networksjl_outgroup_adjusted_labelledv2.txt")
  
 tobs=  readLines('lvl1networks_tob_letters.txt')
 things=list()
-for(xx in 17:20)
+for(xx in 1:20)
 {
 
          things[[xx]]=list()
