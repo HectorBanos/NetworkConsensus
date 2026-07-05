@@ -1,0 +1,115 @@
+IQ-TREE multicore version 2.2.2.7 COVID-edition for Mac OS X 64-bit built May 30 2023
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams, Ly Trong Nhan.
+
+Host:    HBmini (SSE4.2, 24 GB RAM)
+Command: /Users/006512736/Library/CloudStorage/OneDrive-CaliforniaStateUniversitySanBernardino/Documents/iqtree-2.2.2.7-MacOSX/bin/iqtree2 --alisim sseq400 -seed 578 -redo -m GTR{1.030/4.175/0.608/1.303/3.878}+F{0.299/0.211/0.212/0.278}+G{1.518} -te /Users/006512736/Library/CloudStorage/OneDrive-CaliforniaStateUniversitySanBernardino/Documents/ToBolivier/R/Pipeline/CleanPipeline-thirdv2/sim_out/ssampled_gtrees_400.treefile --seqtype DNA --length 483 -blfix -af phy -s /Users/006512736/Library/CloudStorage/OneDrive-CaliforniaStateUniversitySanBernardino/Documents/ToBolivier/R/Pipeline/CleanPipeline-thirdv2/auxfiles/papiofull_out.phylip
+Seed:    578 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Jul  2 17:20:55 2026
+Kernel:  SSE2 - 1 threads (12 CPU cores detected)
+
+Reading alignment file /Users/006512736/Library/CloudStorage/OneDrive-CaliforniaStateUniversitySanBernardino/Documents/ToBolivier/R/Pipeline/CleanPipeline-thirdv2/auxfiles/papiofull_out.phylip ... Phylip format detected
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 0.919036 secs using 70.42% CPU
+Alignment has 21 sequences with 1761114 columns, 181028 distinct patterns
+248012 parsimony-informative, 270944 singleton sites, 1242158 constant sites
+   Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 0.00769806 secs using 95.97% CPU
+   1  A    8.42%    failed      0.00%
+   2  B    5.77%    passed     29.99%
+   3  C    5.82%    failed      4.41%
+   4  D    5.02%    passed     63.27%
+   5  E    8.16%    failed      0.01%
+   6  F    9.08%    failed      0.65%
+   7  G    4.04%    passed     94.99%
+   8  H    5.03%    passed     46.99%
+   9  I   11.62%    failed      0.00%
+  10  J    6.48%    failed      0.00%
+  11  K   11.42%    failed      0.00%
+  12  L    8.81%    failed      0.00%
+  13  M    5.74%    passed     20.31%
+  14  N    6.25%    passed     34.44%
+  15  O    6.56%    passed     96.66%
+  16  P    5.07%    passed      9.38%
+  17  Q    6.85%    failed      0.00%
+  18  R    4.56%    failed      0.00%
+  19  S   11.42%    failed      0.00%
+  20  T    8.13%    failed      0.00%
+  21  U    8.13%    failed      0.00%
+****  TOTAL    7.26%  13 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: minimal branch length is reduced to 0.000000056782 for long alignment
+NOTE: U is identical to T but kept for subsequent analysis
+Checking for duplicate sequences: done in 0.00700784 secs using 97.68% CPU
+Reading input tree file /Users/006512736/Library/CloudStorage/OneDrive-CaliforniaStateUniversitySanBernardino/Documents/ToBolivier/R/Pipeline/CleanPipeline-thirdv2/sim_out/ssampled_gtrees_400.treefile ... rooted tree
+
+NOTE: 493 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -10280538.726
+Optimal log-likelihood: -10280538.726
+Rate parameters:  A-C: 1.03000  A-G: 4.17500  A-T: 0.60800  C-G: 1.30300  C-T: 3.87800  G-T: 1.00000
+Base frequencies:  A: 0.299  C: 0.211  G: 0.212  T: 0.278
+Gamma shape alpha: 1.518
+Parameters optimization took 1 rounds (0.148 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -10280538.726
+Total tree length: 0.139
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.159 sec (0h:0m:0s)
+Total wall-clock time used: 0.224 sec (0h:0m:0s)
+
+Analysis results written to: 
+  IQ-TREE report:                /Users/006512736/Library/CloudStorage/OneDrive-CaliforniaStateUniversitySanBernardino/Documents/ToBolivier/R/Pipeline/CleanPipeline-thirdv2/auxfiles/papiofull_out.phylip.iqtree
+  Maximum-likelihood tree:       /Users/006512736/Library/CloudStorage/OneDrive-CaliforniaStateUniversitySanBernardino/Documents/ToBolivier/R/Pipeline/CleanPipeline-thirdv2/auxfiles/papiofull_out.phylip.treefile
+  Screen log file:               /Users/006512736/Library/CloudStorage/OneDrive-CaliforniaStateUniversitySanBernardino/Documents/ToBolivier/R/Pipeline/CleanPipeline-thirdv2/auxfiles/papiofull_out.phylip.log
+
+[Alignment Simulator] Executing
+ - Tree filepath: /Users/006512736/Library/CloudStorage/OneDrive-CaliforniaStateUniversitySanBernardino/Documents/ToBolivier/R/Pipeline/CleanPipeline-thirdv2/sim_out/ssampled_gtrees_400.treefile
+ - Length of output sequences: 483
+ - Model: GTR+FU{0.299,0.211,0.212,0.278}
+ - Number of output datasets: 1
+Phylip format detected
+WARNING: The sequence length of the input alignment is unequal to that of that simulated sequences. Thus, only gaps in the first MIN(input_sequence_length, simulated_sequence_length) sites are copied.
+SUBSTITUTION PROCESS
+--------------------
+
+Model of substitution: GTR+FU+G4
+
+Rate parameter R:
+
+  A-C: 1.030
+  A-G: 4.175
+  A-T: 0.608
+  C-G: 1.303
+  C-T: 3.878
+  G-T: 1.000
+
+State frequencies: (user-defined)
+
+  pi(A) = 0.299
+  pi(C) = 0.211
+  pi(G) = 0.212
+  pi(T) = 0.278
+
+Rate matrix Q:
+
+  A    -0.877      0.15     0.611     0.117
+  C     0.212     -1.15     0.191     0.744
+  G     0.861      0.19     -1.24     0.192
+  T     0.125     0.564     0.146    -0.836
+
+Model of rate heterogeneity: Gamma with 4 categories
+Gamma shape alpha: 1.52
+
+ Category  Relative_rate  Proportion
+  1         0.228          0.25
+  2         0.592          0.25
+  3         1.05           0.25
+  4         2.13           0.25
+Relative rates are computed as MEAN of the portion of the Gamma distribution falling in the category.
+
+[Alignment Simulator] Done
+Simulation time: 2.464s
+Date and Time: Thu Jul  2 17:20:58 2026
