@@ -109,7 +109,7 @@ library(stringr)
    }
    circord <- cycle_circordv2(net1)
    circord  <- circord [order(sapply(circord , length))]
- 
+   circord <- cycle_circordv2(net1)
    hybrid_order <- matching_hybrid_and_cycles(circord,ch1)
     
    circord<-circord[hybrid_order]

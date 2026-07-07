@@ -67,8 +67,8 @@ load(file4)#M4
 load(file1)#M1
 load(file2)#M2
 
- sipo=list()
-kk=1
+ sipo=c()
+kk=2
 for(kk in 1:2)
 {
   L =list(result3,result4)[[kk]]
@@ -191,6 +191,8 @@ for(kk in 1:2)
         t2blobs_a[yy] = t2blobs_a[yy] + 0
         t2blobs_c[yy] = t2blobs_c[yy] + 1*truen_num_blobs
         
+        if(yy==3){sipo =c(sipo, 0)}
+        
         t1blobs_a[yy] = t1blobs_a[yy] + 0
         t1blobs_c[yy] = t1blobs_c[yy] + 1*truen_num_blobs
         t1blobs_b[yy] = t1blobs_b[yy] + 0
@@ -221,7 +223,7 @@ for(kk in 1:2)
         t1blobs_a[yy] = t1blobs_a[yy] +   sum(L[[i]][[yy+1]][,5]==1 & L[[i]][[yy+1]][,9]>0)
         t1blobs_c[yy] = t1blobs_c[yy] + 1*truen_num_blobs
         t1blobs_b[yy] = t1blobs_b[yy] + 1*sum(L[[i]][[yy+1]][,9]>0) 
- 
+        if(yy==3){sipo =c(sipo, sum(L[[i]][[yy+1]][,5]==1 & L[[i]][[yy+1]][,9]>0))}
         t2blobs_a[yy] = t2blobs_a[yy] +   sum(L[[i]][[yy+1]][,5]==1 & L[[i]][[yy+1]][,9]>0)
         t2blobs_c[yy] = t2blobs_c[yy] + 1*truen_num_blobs
         
@@ -314,7 +316,7 @@ for(kk in 1:2)
   t1Hy = (t1Hy_a / t1Hy_b)[idx]
   t2Hy = (t2Hy_a / t2Hy_c)[idx]
   
-  sipo[[kk]]=list( t1blobs,t2blobs,t1CO,t2CO,t1Hy,t2Hy,t1Sp,  t2Sp)
+  # sipo[[kk]]=list( t1blobs,t2blobs,t1CO,t2CO,t1Hy,t2Hy,t1Sp,  t2Sp)
   
   t1Sp = (t1Sp_a / t1Sp_b)[idx]
   t2Sp = (t2Sp_a / t2Sp_c)[idx]

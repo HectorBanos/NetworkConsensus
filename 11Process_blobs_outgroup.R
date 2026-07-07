@@ -151,13 +151,28 @@ result[[xx]][[2]] <- merge_six_trees(things[[xx]][[2]], things[[xx]][[5]],things
 result[[xx]][[3]] <- merge_six_trees(things[[xx]][[1]], things[[xx]][[4]],things[[xx]][[6]], things[[xx]][[9]],things[[xx]][[11]],things[[xx]][[14]])
  # View(result[,-1])
 
-if(things[[xx]][[19]][1] =="No blobs" || things[[xx]][[22]][1]=="this is a tree"  || things[[xx]][[23]][1] =="No blobs")
-{result[[xx]][[4]] = as.matrix(c("NA",'NA')) }else{   result[[xx]][[4]] <- merge_six_trees(things[[xx]][[19]], things[[xx]][[20]],things[[xx]][[22]], things[[xx]][[23]],things[[xx]][[24]],things[[xx]][[25]])
-}
+if(things[[xx]][[19]][1] =="No blobs" || things[[xx]][[22]][1]=="this is a tree"  )
+{result[[xx]][[4]] = as.matrix(c("NA",'NA')) }else{   
+  if(things[[xx]][[23]][1] =="No blobs"){
+    things[[xx]][[23]] = things[[xx]][[19]]
+    things[[xx]][[23]][,2:3]<- 0 
+    things[[xx]][[22]]=  things[[xx]][[19]]
+    things[[xx]][[22]][,2:3]<- 0 
+  }
+  result[[xx]][[4]] <- merge_six_trees(things[[xx]][[19]], things[[xx]][[20]],things[[xx]][[22]], things[[xx]][[23]],things[[xx]][[24]],things[[xx]][[25]])
+
+  }
 # View(result[,-1])
 
-if(things[[xx]][[26]][1]=="No blobs"|| things[[xx]][[29]][1]=="this is a tree"  || things[[xx]][[30]][1] =="No blobs")
-{result[[xx]][[5]] = as.matrix(c("NA",'NA')) }else{    result[[xx]][[5]] <- merge_six_trees(things[[xx]][[26]], things[[xx]][[27]],things[[xx]][[29]], things[[xx]][[30]],things[[xx]][[31]],things[[xx]][[32]])
+if(things[[xx]][[26]][1]=="No blobs"|| things[[xx]][[29]][1]=="this is a tree")
+{
+  if(things[[xx]][[29]][1] =="No blobs"){
+    things[[xx]][[29]] = things[[xx]][[26]]
+    things[[xx]][[29]][,2:3]<- 0 
+    things[[xx]][[30]]=  things[[xx]][[26]]
+    things[[xx]][[30]][,2:3]<- 0 
+  }
+  result[[xx]][[5]] = as.matrix(c("NA",'NA')) }else{    result[[xx]][[5]] <- merge_six_trees(things[[xx]][[26]], things[[xx]][[27]],things[[xx]][[29]], things[[xx]][[30]],things[[xx]][[31]],things[[xx]][[32]])
 }
  }
 
@@ -305,14 +320,29 @@ save(result,file=paste0(location,'/BlobAnalysis_full_outgroup.Rdata'))
     result[[xx]][[3]] <- merge_six_trees(things[[xx]][[1]], things[[xx]][[4]],things[[xx]][[6]], things[[xx]][[9]],things[[xx]][[11]],things[[xx]][[14]])
     # View(result[,-1])
     
-    if(things[[xx]][[19]][1] =="No blobs" || things[[xx]][[22]][1]=="this is a tree"  || things[[xx]][[23]][1] =="No blobs")
-    {result[[xx]][[4]] = as.matrix(c("NA",'NA')) }else{   result[[xx]][[4]] <- merge_six_trees(things[[xx]][[19]], things[[xx]][[20]],things[[xx]][[22]], things[[xx]][[23]],things[[xx]][[24]],things[[xx]][[25]])
+    if(things[[xx]][[19]][1] =="No blobs" || things[[xx]][[22]][1]=="this is a tree"  )
+    {result[[xx]][[4]] = as.matrix(c("NA",'NA')) }else{   
+      if(things[[xx]][[23]][1] =="No blobs"){
+        things[[xx]][[23]] = things[[xx]][[19]]
+        things[[xx]][[23]][,2:3]<- 0 
+        things[[xx]][[22]]=  things[[xx]][[19]]
+        things[[xx]][[22]][,2:3]<- 0 
+      }
+      result[[xx]][[4]] <- merge_six_trees(things[[xx]][[19]], things[[xx]][[20]],things[[xx]][[22]], things[[xx]][[23]],things[[xx]][[24]],things[[xx]][[25]])
+      
     }
     # View(result[,-1])
     
-    if(things[[xx]][[26]][1]=="No blobs"|| things[[xx]][[29]][1]=="this is a tree" )
-    {result[[xx]][[5]] = as.matrix(c("NA",'NA')) }else{    result[[xx]][[5]] <- merge_six_trees(things[[xx]][[26]], things[[xx]][[27]],things[[xx]][[29]], things[[xx]][[30]],things[[xx]][[31]],things[[xx]][[32]])
-    }
+    if(things[[xx]][[26]][1]=="No blobs"|| things[[xx]][[29]][1]=="this is a tree")
+    {
+      if(things[[xx]][[29]][1] =="No blobs"){
+        things[[xx]][[29]] = things[[xx]][[26]]
+        things[[xx]][[29]][,2:3]<- 0 
+        things[[xx]][[30]]=  things[[xx]][[26]]
+        things[[xx]][[30]][,2:3]<- 0 
+      }
+      result[[xx]][[5]] = as.matrix(c("NA",'NA')) }else{    result[[xx]][[5]] <- merge_six_trees(things[[xx]][[26]], things[[xx]][[27]],things[[xx]][[29]], things[[xx]][[30]],things[[xx]][[31]],things[[xx]][[32]])
+      }
  # View(result[,-1])
   }
   
