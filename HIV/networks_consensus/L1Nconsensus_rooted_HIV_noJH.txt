@@ -1,0 +1,44 @@
+Input:    squirrel_rooted_sampling_HIV_noJH_subtypename.txt
+Networks: 1000
+Outgroup: N
+
+=== Consensus network (newick, with internal labels) ===
+(N,((G,(A2,(A4,((A3,A1)_16,(A6,#H25)_24)_23)_22)_21)_20,(C,((K,(F1,F2)_18)_17,(D,(B,(A6B)#H25)_26)_27)_28)_29)_15_blob1);
+
+=== Consensus network (newick, without internal labels) ===
+(N,((G,(A2,(A4,((A3,A1),(A6,#H25))))),(C,((K,(F1,F2)),(D,(B,(A6B)#H25))))));
+
+=== blob_table ===
+1×11 DataFrame
+ Row │ blob   degree  node   hybrid  support_partition  support_circorder  support_hybrid  partition_num                     hybrid_cluster_num  partition                             hybrid_cluster
+     │ Int64  Int64   Int64  Int64   Float64            Float64            Float64         String                            String              String                                String
+─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │     1      11     15      25              0.567              0.533           0.999  14|12|2|4|1,3|5|6|7|9|10,11,13|8  6                   N|G|A2|A4|A1,A3|A6|A6B|B|D|F1,F2,K|C  A6B
+Shape: 1 rows × 11 columns
+
+=== hybrid_table ===
+7×7 DataFrame
+ Row │ blob   node_from  node_to  edge   support_hybrid  cluster_num  cluster
+     │ Int64  Int64      Int64    Int64  Float64         String       String
+─────┼────────────────────────────────────────────────────────────────────────
+   1 │     1         23       16     15           0.003  1,3          A1,A3
+   2 │     1         22        4      4           0.045  4            A4
+   3 │     1         24        5      5           0.109  5            A6
+   4 │     1         25        6      6           0.999  6            A6B
+   5 │     1         29        8      8           0.003  8            C
+   6 │     1         28       17     16           0.001  10,11,13     F1,F2,K
+   7 │     1         21        2      2           0.007  2            A2
+Shape: 7 rows × 7 columns
+
+=== bipartition_table ===
+3×6 DataFrame
+ Row │ node1  node2  edge   support_nonredundant  cluster_num  cluster
+     │ Int64  Int64  Int64  Float64               String       String
+─────┼─────────────────────────────────────────────────────────────────
+   1 │    17     18     17                 0.998  10,11        F1,F2
+   2 │    23     16     15                 0.149  1,3          A1,A3
+   3 │    28     17     16                 0.032  10,11,13     F1,F2,K
+Shape: 3 rows × 6 columns
+
+=== taxa ===
+A1, A2, A3, A4, A6, A6B, B, C, D, F1, F2, G, K, N

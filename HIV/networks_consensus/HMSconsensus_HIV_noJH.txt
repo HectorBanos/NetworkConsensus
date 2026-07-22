@@ -1,0 +1,56 @@
+Reference: HMS consensus network (hardcoded in this script)
+Sample:    squirrel_rooted_sampling_HIV_noJH_subtypename.txt
+Networks:  1000
+
+=== Reference network (newick, with internal labels) ===
+(N,((C,(((F2,F1)I7,K)I5,(D,(B,(A6B)#H1)I1)I11)I13)I3,(G,((((A3,A1)I6,(A6,#H1)I12)I4,A4)I2,A2)I14)I9)I10)I8;
+
+=== Reference network (newick, without internal labels) ===
+(N,((C,(((F2,F1),K),(D,(B,(A6B)#H1)))),(G,((((A3,A1),(A6,#H1)),A4),A2))));
+
+=== blob_table ===
+1×6 DataFrame
+ Row │ blob   degree  node   support_partition  partition_num                     partition
+     │ Int64  Int64   Int64  Float64            String                            String
+─────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │     1      11     28              0.567  14|8|10,11,13|9|7|6|5|1,3|4|2|12  N|C|F1,F2,K|D|B|A6B|A6|A1,A3|A4|A2|G
+Shape: 1 rows × 6 columns
+
+=== circorder_table ===
+7×5 DataFrame
+ Row │ blob   order                                support_circorder  partition_num                     partition
+     │ Int64  Tuple…                               Float64            String                            String
+─────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │     1  (1, 4, 5, 6, 7, 8, 9, 10, 11, 3, 2)              0.02   14|9|7|6|5|1,3|4|2|12|10,11,13|8  N|D|B|A6B|A6|A1,A3|A4|A2|G|F1,F2,K|C
+   2 │     1  (1, 3, 11, 10, 9, 8, 7, 6, 5, 4, 2)              0.001  14|10,11,13|12|2|4|1,3|5|6|7|9|8  N|F1,F2,K|G|A2|A4|A1,A3|A6|A6B|B|D|C
+   3 │     1  (1, 2, 3, 11, 4, 5, 6, 7, 8, 9, 10)              0.001  14|8|10,11,13|12|9|7|6|5|1,3|4|2  N|C|F1,F2,K|G|D|B|A6B|A6|A1,A3|A4|A2
+   4 │     1  (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)              0.533  14|8|10,11,13|9|7|6|5|1,3|4|2|12  N|C|F1,F2,K|D|B|A6B|A6|A1,A3|A4|A2|G
+   5 │     1  (1, 2, 10, 9, 8, 7, 6, 5, 4, 3, 11)              0.001  14|8|2|4|1,3|5|6|7|9|10,11,13|12  N|C|A2|A4|A1,A3|A6|A6B|B|D|F1,F2,K|G
+   6 │     1  (1, 3, 2, 4, 5, 6, 7, 8, 9, 10, 11)              0.008  14|10,11,13|8|9|7|6|5|1,3|4|2|12  N|F1,F2,K|C|D|B|A6B|A6|A1,A3|A4|A2|G
+   7 │     1  (1, 11, 9, 10, 8, 7, 6, 5, 4, 3, 2)              0.003  14|12|4|2|1,3|5|6|7|9|10,11,13|8  N|G|A4|A2|A1,A3|A6|A6B|B|D|F1,F2,K|C
+Shape: 7 rows × 5 columns
+
+=== hybrid_table ===
+7×7 DataFrame
+ Row │ blob   node_from  node_to  edge   support_hybrid  cluster_num  cluster
+     │ Int64  Int64      Int64    Int64  Float64         String       String
+─────┼────────────────────────────────────────────────────────────────────────
+   1 │     1         11       10     10           0.999  6            A6B
+   2 │     1         21       20     20           0.109  5            A6
+   3 │     1         15        2      2           0.003  8            C
+   4 │     1         26       25     26           0.007  2            A2
+   5 │     1         24       23     24           0.045  4            A4
+   6 │     1         22       19     19           0.003  1,3          A1,A3
+   7 │     1         14        7      7           0.001  10,11,13     F1,F2,K
+Shape: 7 rows × 7 columns
+
+=== bipartition_table ===
+1×6 DataFrame
+ Row │ node1  node2  edge   support_nonredundant  cluster_num  cluster
+     │ Int64  Int64  Int64  Float64               String       String
+─────┼─────────────────────────────────────────────────────────────────
+   1 │     7      5      5                 0.998  10,11        F1,F2
+Shape: 1 rows × 6 columns
+
+=== taxa ===
+A1, A2, A3, A4, A6, A6B, B, C, D, F1, F2, G, K, N
