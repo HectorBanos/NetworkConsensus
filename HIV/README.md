@@ -64,7 +64,7 @@ shown alongside.
   this folder; their `_seqname` counterparts (full FASTA taxa names) go in the
   `seqname/` subfolder. The consensus methods read the `_subtypename` files,
   since they require matching leaf labels across replicates.
-  `top5_frequent_networks.txt` lists the five most frequent networks per run,
+  `network_frequencies.txt` lists the five most frequent networks per run,
   grouped by isomorphism (rooted labeled isomorphism for the rooted runs,
   semi-directed for the unrooted). `clade_frequencies.txt` gives how often three
   clades of interest occur in each run, and `root_frequencies.txt` the most
