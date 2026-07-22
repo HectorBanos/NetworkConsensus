@@ -42,7 +42,7 @@ consensus methods depend on; step 99 is independent of the network side.
 | `2_consensus_L1N.jl` | Level-1 consensus network + support | `networks_squirrel/` | `networks_consensus/` |
 | `3_consensus_HWC.jl` | Hardwired cluster consensus network (hardcoded) + support | `networks_squirrel/` | `networks_consensus/` |
 | `4_consensus_HMS.jl` | HMS consensus network (hardcoded) +  support | `networks_squirrel/` | `networks_consensus/` |
-| `99_RaxML-NG.sh` | ML trees + bootstrap support | `data/` | `trees_raxmlng/` |
+| `99_RAxML-NG.sh` | ML trees + bootstrap support | `data/` | `trees_raxmlng/` |
 
 Steps 2–4 are the three consensus methods being compared. Each writes its
 consensus network with support (scored from the squirrel sample) to
@@ -66,7 +66,9 @@ shown alongside.
   since they require matching leaf labels across replicates.
   `top5_frequent_networks.txt` lists the five most frequent networks per run,
   grouped by isomorphism (rooted labeled isomorphism for the rooted runs,
-  semi-directed for the unrooted).
+  semi-directed for the unrooted). `clade_frequencies.txt` gives how often three
+  clades of interest occur in each run, and `root_frequencies.txt` the most
+  frequent root placements (tripartitions) for the two rooted runs.
 - **`networks_consensus/`** — the consensus networks with support, one
   plain-text report each: the network in Newick (with and without internal
   labels) plus its support tables (blob/partition, hybrid, bipartition, and — for
@@ -129,7 +131,7 @@ Regenerating the HMS/HWC networks themselves needs
 RAxML-NG (step 99), expected at `~/miniforge3/bin/raxml-ng`:
 
 ```bash
-./99_RaxML-NG.sh                         # slow: 2 ML searches with bootstrapping
+./99_RAxML-NG.sh                         # slow: 2 ML searches with bootstrapping
 ```
 
 ## Notes

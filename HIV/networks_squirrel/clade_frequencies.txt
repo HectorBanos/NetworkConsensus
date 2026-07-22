@@ -1,0 +1,47 @@
+Frequencies of three clades of interest in the squirrel network samples.
+
+For each sampling run, the count is how many of the input networks contain the
+split "clade | rest" -- i.e. have that clade as a hardwired cluster of the
+network (computed with PhyloNetworks). For the unrooted runs the networks carry
+an arbitrary rooting, so a split is counted whenever either side appears as a
+cluster, which makes the count rooting-invariant.
+
+========================================================================
+Rooted, all subtypes
+========================================================================
+Input:    squirrel_rooted_sampling_HIV_all_subtypename.txt
+Networks: 1000
+
+F1,F2   | rest :  1000/1000  (100.0%)
+F1,F2,K | rest :   991/1000  ( 99.1%)
+A1,A3   | rest :   894/1000  ( 89.4%)
+
+========================================================================
+Rooted, without J and H
+========================================================================
+Input:    squirrel_rooted_sampling_HIV_noJH_subtypename.txt
+Networks: 1000
+
+F1,F2   | rest :  1000/1000  (100.0%)
+F1,F2,K | rest :   998/1000  ( 99.8%)
+A1,A3   | rest :   776/1000  ( 77.6%)
+
+========================================================================
+Unrooted, all subtypes
+========================================================================
+Input:    squirrel_unrooted_sampling_HIV_all_subtypename.txt
+Networks: 1000
+
+F1,F2   | rest :  1000/1000  (100.0%)
+F1,F2,K | rest :   991/1000  ( 99.1%)
+A1,A3   | rest :   910/1000  ( 91.0%)
+
+========================================================================
+Unrooted, without J and H
+========================================================================
+Input:    squirrel_unrooted_sampling_HIV_noJH_subtypename.txt
+Networks: 1000
+
+F1,F2   | rest :  1000/1000  (100.0%)
+F1,F2,K | rest :   999/1000  ( 99.9%)
+A1,A3   | rest :   844/1000  ( 84.4%)

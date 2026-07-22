@@ -1,0 +1,57 @@
+Where the root sits in the two rooted squirrel samples.
+
+In each rooted network the outgroup N is a child of the root; the root's other
+child -- the attached node -- induces a tripartition of the taxa via its three
+incident edges: the outgroup side {N}, and the two taxon sets reachable below
+its two child edges. We list the five most frequent tripartitions per run,
+written  N | set | set.  If the attached node is a blob node (the reticulation
+cycle runs through it), the hybrid taxon is reachable down both child edges and
+so appears in both sets. Reachable sets are hardwired clusters, computed with
+PhyloNetworks. The hybrid is whichever taxon squirrel inferred as reticulate in
+that replicate -- usually A6B, occasionally another (e.g. C).
+
+========================================================================
+Rooted, all subtypes
+========================================================================
+Input:    squirrel_rooted_sampling_HIV_all_subtypename.txt
+Networks: 1000
+Distinct: 64
+Top 5:    606/1000 (60.6%)
+
+#1  186/1000  (18.6%)
+N | A1,A2,A3,A4,A6,A6B,G,J | A6B,B,C,D,F1,F2,H,K
+
+#2  136/1000  (13.6%)
+N | A1,A2,A3,A4,A6,A6B,G,H,J | A6B,B,C,D,F1,F2,K
+
+#3  97/1000  (9.7%)
+N | A1,A2,A3,A4,A6,A6B,G | A6B,B,C,D,F1,F2,H,J,K
+
+#4  94/1000  (9.4%)
+N | A1,A2,A3,A4,A6,A6B | A6B,B,C,D,F1,F2,G,H,J,K
+
+#5  93/1000  (9.3%)
+N | A1,A2,A3,A4,A6,G | A6B,B,C,D,F1,F2,H,J,K
+
+========================================================================
+Rooted, without J and H
+========================================================================
+Input:    squirrel_rooted_sampling_HIV_noJH_subtypename.txt
+Networks: 1000
+Distinct: 10
+Top 5:    994/1000 (99.4%)
+
+#1  946/1000  (94.6%)
+N | A1,A2,A3,A4,A6,A6B,G | A6B,B,C,D,F1,F2,K
+
+#2  29/1000  (2.9%)
+N | A1,A2,A3,A4,A6,A6B,C,F1,F2,G,K | A6B,B,D
+
+#3  11/1000  (1.1%)
+N | A1,A2,A3,A4,A6,A6B,B,D,G | C,F1,F2,K
+
+#4  5/1000  (0.5%)
+N | A1,A2,A3,A4,A6,G | A6B,B,C,D,F1,F2,K
+
+#5  3/1000  (0.3%)
+N | A1,A2,A3,A4,A6,A6B,B,C,D,F1,F2,G,K | C
