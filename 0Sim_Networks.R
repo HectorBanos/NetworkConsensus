@@ -1,7 +1,7 @@
 library(MSCquartets)
 library(SiPhyNetwork)
 path_to_Julia = '/Applications/Julia-1.11.app/Contents/Resources/julia/bin/julia'
-base_dir <- "~/Library/CloudStorage/OneDrive-CaliforniaStateUniversitySanBernardino/Documents/ToBolivier/R/Pipeline/CleanPipeline-thirdv2"
+base_dir <- "~/Library/CloudStorage/OneDrive-CaliforniaStateUniversitySanBernardino/Documents/ToBolivier/R/Pipeline/CleanPipeline-final"
 location <- file.path(base_dir, "sim_out")
 auxfile_location <- file.path(base_dir, "auxfiles")
 setwd(auxfile_location)

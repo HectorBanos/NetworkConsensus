@@ -1,6 +1,13 @@
+#######################################################
+########## Create subsequences of length 300 ##########
+#######################################################
+
+
+#For all netwokrs each gene we obtain a subsequence creating a shorter MSA
+
 library(ape)   
 
-base_dir <- "~/Library/CloudStorage/OneDrive-CaliforniaStateUniversitySanBernardino/Documents/ToBolivier/R/Pipeline/CleanPipeline-thirdv2"
+base_dir <- "~/Library/CloudStorage/OneDrive-CaliforniaStateUniversitySanBernardino/Documents/ToBolivier/R/Pipeline/CleanPipeline-final"
 location <- file.path(base_dir, "sim_out")
 setwd(location)
 

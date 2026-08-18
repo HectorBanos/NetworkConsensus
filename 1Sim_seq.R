@@ -8,7 +8,7 @@ library(ape)
 library(phangorn)
 library(TreeTools)
 
-base_dir <- "~/Library/CloudStorage/OneDrive-CaliforniaStateUniversitySanBernardino/Documents/ToBolivier/R/Pipeline/CleanPipeline-thirdv2"
+base_dir <- "~/Library/CloudStorage/OneDrive-CaliforniaStateUniversitySanBernardino/Documents/ToBolivier/R/Pipeline/CleanPipeline-final"
 location <- file.path(base_dir, "sim_out")
 setwd(location)
  

@@ -1,0 +1,1 @@
+(((P,(Q,R,S)I1)I8,((L,O,(N,M)I3)I6,((F,G,H)I12,(I,J)I10,(E,(C,D,(A,B)I7)I2)I5)I11,K)I9,T)I4,U)I13; 

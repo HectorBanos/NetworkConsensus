@@ -149,13 +149,14 @@ library(stringr)
  #Computes the bootstrap support 
  hybrid_dist_boot <- function(lvl1, bootlvl1) {
    
-    problematic <- get_taxa_below_2cycles(lvl1)$taxa
+    
  
    
    h <- lvl1$reticulation 
    
   if(!is.null(h))
   {
+    problematic <- get_taxa_below_2cycles(lvl1)$taxa
    ch1 <- lapply(h[, 2], function(node) {
      lvl1$tip.label[unlist(Descendants(lvl1, node, type = "tips"))]
    })
@@ -246,13 +247,14 @@ library(stringr)
  
  hybrid_dist_bootv2 <- function(lvl1, bootlvl1) {
    
-   problematic <- get_taxa_below_2cycles(lvl1)$taxa
-   
+ 
    
    h <- lvl1$reticulation 
    
    if(!is.null(h))
    {
+     problematic <- get_taxa_below_2cycles(lvl1)$taxa
+     
      ch1 <- lapply(h[, 2], function(node) {
        lvl1$tip.label[unlist(Descendants(lvl1, node, type = "tips"))]
      })
@@ -327,7 +329,7 @@ library(stringr)
      }
      
      # hybridscores <- hybridscores[  (hybridscores[,2]=="3") + (hybridscores[,2]=="4")<1 ,  ]
-      # hybridscores <- hybridscores[  (hybridscores[,2]=="3")  <1 ,  ]
+       hybridscores <- hybridscores[  (hybridscores[,2]=="0")  <1 ,  ]
      
      
      if( is.null(dim(hybridscores)) && length(hybridscores)>0  ){hybridscores <- t(hybridscores)
