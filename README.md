@@ -114,6 +114,10 @@ Although many files are used by the simulation pipeline, the most relevant are:
 
 * `HMS-consensus.pl`: Perl implementation of the HMS consensus method.
 * `HWC-consensus.pl`: Perl implementation of the HWC consensus method.
+* `3SQUIRREL_rooted_full.py`: Python 
+* `4SQUIRREL_rooted_partial.py`: Python 
+* `5SQUIRREL_unrooted_full.py`: Python 
+* `6SQUIRREL_unrooted_partial.py`: Python 
 * `XXX.lisp`: Lisp implementation of the consensus method introduced in this work.
 
 ---
@@ -159,40 +163,33 @@ Simulates, for each network:
 
 Produces the reduced MSAs by retaining only one-third of the sites from each simulated gene.
 
-#### `3SQUIRREL_rooted_full.py`
+#### `3SQUIRREL_R.py`
 
-Runs Squirrel on the full concatenated alignments while providing the root, producing both the inferred network and 100 bootstrap networks. This script is run once per replicate, writing its outputs to the corresponding `rootedfull`*`i`*`/` subfolder.
+An R wrapper script is provided that automates the 10 repetitions, creating the replicate subfolders, copying the required MSA and sequence-length files into each one, and invoking the appropriate Python script and runing Squirrel on all data types (full and third, and rooted and  unrooted), producing both the inferred network and 100 bootstrap networks. This script is run once per replicate, writing its outputs to the corresponding `rootedfull`*`i`*`/` subfolder.
+The script to run Squirrel are in the auxfiles folder:
+* `3SQUIRREL_rooted_full.py` 
+* `4SQUIRREL_rooted_partial.py`  
+* `5SQUIRREL_unrooted_full.py` 
+* `6SQUIRREL_unrooted_partial.py` 
+These are each executed 10 times (once per replicate). 
 
-#### `4SQUIRREL_rooted_partial.py`
-
-Runs Squirrel on the one-third alignments while providing the root. Outputs are written to `rootedthird`*`i`*`/`.
-
-#### `5SQUIRREL_unrooted_full.py`
-
-Runs Squirrel on the full concatenated alignments without providing the root. Outputs are written to `unrootedfull`*`i`*`/`.
-
-#### `6SQUIRREL_unrooted_partial.py`
-
-Runs Squirrel on the one-third alignments without providing the root. Outputs are written to `unrootedthird`*`i`*`/`.
-
-Scripts 3–6 are each executed 10 times (once per replicate). An R wrapper script is provided that automates the 10 repetitions for all four scripts, creating the replicate subfolders, copying the required MSA and sequence-length files into each one, and invoking the appropriate Python script.
-
-#### `7Huber_HWC_cmdlines.txt`
-
-Contains the terminal commands required to compute the HMS and HWC consensus networks for all simulation settings. These commands are run for each replicate subfolder.
-
-#### `8PhyloSummaries.jl`
+#### `4PhyloSummaries.jl`
 
 Julia implementation used to compute the consensus networks introduced in this work from the Squirrel bootstrap networks. This script is run for each of the 40 replicate subfolders (10 replicates × 4 analysis settings), reading the Squirrel bootstrap networks from the subfolder and writing the consensus network file to the same subfolder.
 
-### Analysis and Figure Generation (Files 9–15)
+#### `5Huber_HWC_cmdlines.txt`
 
-Scripts 9–13 are each run across all 10 replicates, reading inputs from and writing outputs to the replicate-specific subfolders. Scripts 14–15 aggregate the results across all 10 replicates, averaging the metrics before generating the final figures.
+Contains the terminal commands required to compute the HMS and HWC consensus networks for all simulation settings. These commands are run for each replicate subfolder.
 
-* `9Process_edges_outgroup.R` – Processes edge-based metrics for the rooted analyses, looping over all 10 replicates and writing results to `rootedfull`*`i`*`/` and `rootedthird`*`i`*`/`.
-* `10Process_edges_nooutgroup.R` – Processes edge-based metrics for the unrooted analyses, writing results to `unrootedfull`*`i`*`/` and `unrootedthird`*`i`*`/`.
-* `11Process_blobs_outgroup.R` – Processes blob, hybrid, and circular order-based metrics for the rooted analyses, across all 10 replicates.
-* `12Process_blobs_nooutgroup.R` – Processes blob, hybrid, and circular order-based metrics for the unrooted analyses, across all 10 replicates.
-* `13CreateExcels.R` – Compiles the processed results into summary spreadsheets, writing one pair of `.xlsx` files into each of the 40 replicate subfolders.
-* `14CreatePlots.R` – Aggregates results across all 10 replicates, computes averages, and generates the main figures presented in the paper.
-* `15CreatePlots_disttoinput.R` – Aggregates results across all 10 replicates, computes averages, and generates figures summarizing the distance of the inferred consensus networks to the true simulated networks.
+
+### Analysis and Figure Generation (Files 6–12)
+
+Scripts 6–12 are each run across all 10 replicates, reading inputs from and writing outputs to the replicate-specific subfolders. Scripts 10–11 aggregate the results across all 10 replicates, averaging the metrics before generating the final figures.
+
+* `6Process_blobs_outgroup.R` – Processes blob, hybrid, and circular order-based metrics for the rooted analyses, across all 10 replicates.
+* `7Process_blobs_nooutgroup.R` – Processes blob, hybrid, and circular order-based metrics for the unrooted analyses, across all 10 replicates.
+* `8Process_edges_outgroup.R` – Processes edge-based metrics for the rooted analyses, looping over all 10 replicates and writing results to `rootedfull`*`i`*`/` and `rootedthird`*`i`*`/`.
+* `9Process_edges_nooutgroup.R` – Processes edge-based metrics for the unrooted analyses, writing results to `unrootedfull`*`i`*`/` and `unrootedthird`*`i`*`/`.
+* `10CreatePlots.R` – Aggregates results across all 10 replicates, computes averages, and generates the main figures presented in the paper.
+* `11CreatePlots_disttoinput.R` – Aggregates results across all 10 replicates, computes averages, and generates figures summarizing the distance of the inferred consensus networks to the true simulated networks.
+* `12CreateExcels.R` – Compiles the processed results into summary spreadsheets, writing one pair of `.xlsx` files into each of the 40 replicate subfolders.
