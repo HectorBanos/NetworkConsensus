@@ -38,10 +38,10 @@ consensus methods depend on; step 99 is independent of the network side.
 
 | Script | Does | Reads | Writes |
 | --- | --- | --- | --- |
-| `1_sample_squirrel_networks.py` | Samples 1000 networks per subtype selection, rooted and unrooted | `data/` | `networks_squirrel/` |
-| `2_consensus_L1N.jl` | Level-1 consensus network + support | `networks_squirrel/` | `networks_consensus/` |
-| `3_consensus_HWC.jl` | Hardwired cluster consensus network (hardcoded) + support | `networks_squirrel/` | `networks_consensus/` |
-| `4_consensus_HMS.jl` | HMS consensus network (hardcoded) +  support | `networks_squirrel/` | `networks_consensus/` |
+| `01_sample_squirrel_networks.py` | Samples 1000 networks per subtype selection, rooted and unrooted | `data/` | `networks_squirrel/` |
+| `02_consensus_L1N.jl` | Level-1 consensus network + support | `networks_squirrel/` | `networks_consensus/` |
+| `03_consensus_HWC.jl` | Hardwired cluster consensus network (hardcoded) + support | `networks_squirrel/` | `networks_consensus/` |
+| `04_consensus_HMS.jl` | HMS consensus network (hardcoded) +  support | `networks_squirrel/` | `networks_consensus/` |
 | `10_clade_frequencies.jl` | Frequency of every non-trivial clade in the rooted samples | `networks_squirrel/` | `networks_squirrel/clade_frequencies.txt` |
 | `11_root_frequencies.jl` | Most frequent root placements (tripartitions) in the rooted samples | `networks_squirrel/` | `networks_squirrel/root_frequencies.txt` |
 | `12_network_frequencies.py` | Most frequent networks, grouped by isomorphism | `networks_squirrel/` | `networks_squirrel/network_frequencies.txt` |
@@ -89,7 +89,7 @@ compute the branch supports depicted in the paper.
 
 ## Sequence sets
 
-The subtype dictionary `RIP_SUBTYPE_SEQUENCES` in `1_sample_squirrel_networks.py`
+The subtype dictionary `RIP_SUBTYPE_SEQUENCES` in `01_sample_squirrel_networks.py`
 is the single source of truth for which sequences are used. It maps each subtype
 to its isolates; one isolate per subtype is sampled per replicate.
 
@@ -112,12 +112,12 @@ Python (step 1):
 
 ```bash
 pip install physquirrel==1.0.9
-python 1_sample_squirrel_networks.py     # slow: 4 x 1000 network inferences
+python 01_sample_squirrel_networks.py     # slow: 4 x 1000 network inferences
 ```
 
-Julia (steps 2–4). L1N (`2_consensus_L1N.jl`) computes the level-1 consensus
-directly. The HMS and HWC consensus networks are hardcoded in `4_consensus_HMS.jl`
-and `3_consensus_HWC.jl` (each with the `perl …-consensus.pl` command that
+Julia (steps 2–4). L1N (`02_consensus_L1N.jl`) computes the level-1 consensus
+directly. The HMS and HWC consensus networks are hardcoded in `04_consensus_HMS.jl`
+and `03_consensus_HWC.jl` (each with the `perl …-consensus.pl` command that
 produced it), so no perl is needed to run them. All three then score their
 network against the squirrel sample.
 
@@ -127,9 +127,9 @@ julia> ] add https://github.com/JuliaPhylo/PhyloSummaries.jl
 ```
 
 ```bash
-julia 2_consensus_L1N.jl
-julia 3_consensus_HWC.jl
-julia 4_consensus_HMS.jl
+julia 02_consensus_L1N.jl
+julia 03_consensus_HWC.jl
+julia 04_consensus_HMS.jl
 ```
 
 Regenerating the HMS/HWC networks themselves needs 
