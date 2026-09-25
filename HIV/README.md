@@ -42,6 +42,9 @@ consensus methods depend on; step 99 is independent of the network side.
 | `2_consensus_L1N.jl` | Level-1 consensus network + support | `networks_squirrel/` | `networks_consensus/` |
 | `3_consensus_HWC.jl` | Hardwired cluster consensus network (hardcoded) + support | `networks_squirrel/` | `networks_consensus/` |
 | `4_consensus_HMS.jl` | HMS consensus network (hardcoded) +  support | `networks_squirrel/` | `networks_consensus/` |
+| `10_clade_frequencies.jl` | Frequency of every non-trivial clade in the rooted samples | `networks_squirrel/` | `networks_squirrel/clade_frequencies.txt` |
+| `11_root_frequencies.jl` | Most frequent root placements (tripartitions) in the rooted samples | `networks_squirrel/` | `networks_squirrel/root_frequencies.txt` |
+| `12_network_frequencies.py` | Most frequent networks, grouped by isomorphism | `networks_squirrel/` | `networks_squirrel/network_frequencies.txt` |
 | `99_RAxML-NG.sh` | ML trees + bootstrap support | `data/` | `trees_raxmlng/` |
 
 Steps 2–4 are the three consensus methods being compared. Each writes its
@@ -50,6 +53,11 @@ consensus network with support (scored from the squirrel sample) to
 computed directly in Julia; HWC (step 3) and HMS (step 4) are built externally by
 perl and hardcoded in their scripts, each with the command that produced it
 shown alongside.
+
+Steps 10–12 are descriptive summaries of the squirrel sample itself (which clades,
+root placements and networks occur how often), independent of the consensus
+methods. The clade frequencies are used to 
+compute the branch supports depicted in the paper.
 
 ## Folders
 
@@ -66,9 +74,9 @@ shown alongside.
   since they require matching leaf labels across replicates.
   `network_frequencies.txt` lists the five most frequent networks per run,
   grouped by isomorphism (rooted labeled isomorphism for the rooted runs,
-  semi-directed for the unrooted). `clade_frequencies.txt` gives how often three
-  clades of interest occur in each run, and `root_frequencies.txt` the most
-  frequent root placements (tripartitions) for the two rooted runs.
+  semi-directed for the unrooted). `clade_frequencies.txt` gives how often every
+  non-trivial clade occurs, and `root_frequencies.txt` the most frequent root
+  placements (tripartitions), both for the two rooted runs only.
 - **`networks_consensus/`** — the consensus networks with support, one
   plain-text report each: the network in Newick (with and without internal
   labels) plus its support tables (blob/partition, hybrid, bipartition, and — for
@@ -128,6 +136,16 @@ Regenerating the HMS/HWC networks themselves needs
 `HMS-consensus.pl` / `HWC-consensus.pl` (perl modules `Bio::PhyloNetwork` and
 `Graph`); the exact commands are in the two script headers.
 
+Sample summaries (steps 10–12). Steps 10 and 11 need only PhyloNetworks; step 12
+uses phylozoo, for both rooted (directed) and semi-directed isomorphism. Each writes into `networks_squirrel/` unless given
+another output directory as its first argument.
+
+```bash
+julia 10_clade_frequencies.jl
+julia 11_root_frequencies.jl
+python 12_network_frequencies.py         # pip install phylozoo==0.2.6
+```
+
 RAxML-NG (step 99), expected at `~/miniforge3/bin/raxml-ng`:
 
 ```bash
@@ -143,4 +161,4 @@ RAxML-NG (step 99), expected at `~/miniforge3/bin/raxml-ng`:
   drawing option only); root them on `N` afterwards if needed.
 - **Versions used.** Python 3.11 · physquirrel 1.0.9 · Julia 1.11.7, PhyloSummaries 0.1.1,
   PhyloNetworks 1.3.1, DataFrames 1.8.2 · RAxML-NG 2.0.2 (conda/miniforge3) ·
-  phylox 1.1.2, phylozoo 0.2.6 (network counting). 
+  phylozoo 0.2.6 (network counting, step 12).
