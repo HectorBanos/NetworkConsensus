@@ -63,8 +63,8 @@ compute the branch supports depicted in the paper.
 
 - **`data/`** — all alignments. `HIV1_RIP_2023_genome_DNA.fasta` is the source
   squirrel samples from. It also contains sequences
-  not used in the analysis. The two `references_*` files are the RAxML alignments —
-  subsets of the source that do **not** contain the A6B recombinant.
+  not used in the analysis. The two `references_*` files are the RAxML alignments
+  (subsets of the source that do **not** contain the A6B recombinant).
 - **`networks_squirrel/`** — the sampled networks, as eNewick, one per line.
   Each subtype selection is sampled in two rooting modes: rooted at the outgroup
   (`squirrel_rooted_*`) and unrooted/semi-directed with no outgroup
@@ -90,7 +90,7 @@ compute the branch supports depicted in the paper.
 ## Sequence sets
 
 The subtype dictionary `RIP_SUBTYPE_SEQUENCES` in `01_sample_squirrel_networks.py`
-is the single source of truth for which sequences are used. It maps each subtype
+holds which sequences are used. It maps each subtype
 to its isolates; one isolate per subtype is sampled per replicate.
 
 The two RAxML alignments pair up as:
@@ -102,7 +102,7 @@ The two RAxML alignments pair up as:
 
 `A6B` is the circulating recombinant form CRF03_AB, represented by the single
 sequence `03_A6B.RU.97.KAL153_2.AF193276`. Unlike the other taxa it is never
-resampled — that exact sequence is fixed in every squirrel replicate as the
+resampled: that exact sequence is fixed in every squirrel replicate as the
 hybrid taxon. It is excluded from the two `references_*` RAxML alignments, which
 are a tree-based analysis.
 
