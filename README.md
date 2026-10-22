@@ -73,7 +73,7 @@ For each of the 20 model networks:
 
 ### Replicate Subfolders
 
-All network inference and consensus results are organised into **10 independent replicates** (`i = 1, …, 10`). Each replicate is an independent run of Squirrel with fresh random seeds, allowing the variability of inference to be assessed.
+All network inference and consensus results are organised into **10 independent replicates** (`i = 1, …, 10`). Each replicate is an independent bootstrap sample to run of Squirrel, allowing the variability of inference to be assessed.
 
 For each replicate `i`, there are four subfolders:
 
@@ -91,8 +91,6 @@ Each subfolder contains, for all 20 simulated networks:
 - Squirrel output files (101 networks each)
 - PhyloSummaries.jl consensus networks (one file per setting)
 - HMS and HWC consensus networks (one file per simulated network)
-- Processed results used for figures and tables (`.Rdata`, produced by scripts 9–12)
-- Summary spreadsheets (`.xlsx`, produced by script 13)
 
 ### Squirrel Network Inference
 
