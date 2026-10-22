@@ -42,7 +42,7 @@ This repository contains all materials needed to replicate the analyses in *Cons
 
 ## Model Networks
 
-**`networksjl_adjusted`** contains the **20 model (true) networks** used in the simulation study. Gene trees and alignments in `sim_out/` were simulated from these networks, and network `X` in this file corresponds to `NetX` throughout the rest of the repository.
+**`networksjl_adjusted`** contains the **20 model (true) networks** used in the simulation study. Gene trees and alignments in `sim_out/` were simulated from these networks, and the `n`-th network in this file corresponds to `Net n` throughout the rest of the repository.
 
 ---
 
