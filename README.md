@@ -1,195 +1,149 @@
- # Repository Overview
+# Consensus Methods for Trees of Blobs and Level-1 Phylogenetic Networks
 
-This repository contains all the materials required to replicate the analyses presented in *Consensus methods for trees of blobs and level-1 phylogenetic networks*, including the simulation pipeline, simulation analyses, and empirical data analyses (HIV and *Leopardus*).
+This repository contains all materials needed to replicate the analyses in *Consensus methods for trees of blobs and level-1 phylogenetic networks*, including:
 
-The repository consists of five main directories and 16 files (numbered from **0** to **15**).
+- the simulation pipeline,
+- the simulation analyses, and
+- the empirical analyses (HIV and *Leopardus*).
 
-## Directory Structure
+---
 
-### 1. `HIV/`
+## Table of Contents
 
-Contains all files required to reproduce the analyses of the HIV dataset.
+- [Repository Structure](#repository-structure)
+- [Model Networks](#model-networks)
+- [Empirical Data](#empirical-data)
+- [Simulation Output (`sim_out/`)](#simulation-output-sim_out)
+  - [Simulated Data](#simulated-data)
+  - [Replicate Subfolders](#replicate-subfolders)
+  - [Squirrel Network Inference](#squirrel-network-inference)
+  - [PhyloSummaries.jl Consensus Networks](#phylosummariesjl-consensus-networks)
+  - [HMS and HWC Consensus Networks](#hms-and-hwc-consensus-networks)
+- [Consensus Method Implementations](#consensus-method-implementations)
 
-### 2. `Leopardus/`
 
-Contains all files required to reproduce the analyses of the *Leopardus* dataset.
+---
 
-### 3. `sim_out/`
+## Repository Structure
 
-Contains all simulated datasets, inferred networks, and consensus networks used in the simulation study.
+```
+.
+├── HIV/                     # HIV empirical analysis
+├── Leopardus/               # Leopardus empirical analysis
+├── sim_out/                 # Simulated data, inferred and consensus networks
+├── networksjl_adjusted      # The 20 model networks used in the simulation study
+├── HMS-consensus.pl         # HMS consensus method (Perl)
+├── HWC-consensus.pl         # HWC consensus method (Perl)
+├── XXX.lisp                 # Consensus method introduced in this work (Lisp)
+└── 0_... – 15_...           # Analysis scripts (see Scripts)
+```
 
-For each of the 20 simulated networks, the directory contains:
+---
 
-* Gene tree samples of 400 genes, for example:
+## Model Networks
 
-  * `sampled_gtrees_RealisticSim_400gts_NetX`
-  * where `X` denotes the network number.
+**`networksjl_adjusted`** contains the **20 model (true) networks** used in the simulation study. Gene trees and alignments in `sim_out/` were simulated from these networks, and network `X` in this file corresponds to `NetX` throughout the rest of the repository.
 
-* Concatenated multiple sequence alignments (MSAs):
+---
 
-  * `concatalignRealisticSim_400gts_NetX.fasta`
+## Empirical Data
 
-* Sequence lengths for the 400 simulated genes:
+| Directory | Contents |
+|---|---|
+| `HIV/` | All files required to reproduce the analyses of the HIV dataset. |
+| `Leopardus/` | All files required to reproduce the analyses of the *Leopardus* dataset. |
 
-  * `seq_lens.csv`
+---
 
-* Reduced MSAs, obtained by retaining only one-third of each gene:
+## Simulation Output (`sim_out/`)
 
-  * `concatalignRealisticSim_400gts_NetX_third.fasta`
+Contains all simulated datasets, inferred networks and consensus networks used in the simulation study. Throughout, `X` denotes the simulated network number (1–20).
 
-* Sequence lengths for the reduced alignments:
+### Simulated Data
 
-  * `seq_lens_third.csv`
-    
+For each of the 20 model networks:
+
+| File | Description |
+|---|---|
+| `sampled_gtrees_RealisticSim_400gts_NetX` | Sample of 400 simulated gene trees |
+| `concatalignRealisticSim_400gts_NetX.fasta` | Concatenated multiple sequence alignment (MSA) |
+| `seq_lens.csv` | Sequence lengths of the 400 simulated genes |
+| `concatalignRealisticSim_400gts_NetX_third.fasta` | Reduced MSA, keeping one-third of each gene |
+| `seq_lens_third.csv` | Sequence lengths for the reduced alignments |
+
 ### Replicate Subfolders
 
-All network inference and consensus results are organised into **10 independent replicates**. Each replicate corresponds to an independent run of Squirrel on fresh random seeds, allowing variability in the inference to be assessed. The replicates are numbered 1 through 10.
+All network inference and consensus results are organised into **10 independent replicates** (`i = 1, …, 10`). Each replicate is an independent run of Squirrel with fresh random seeds, allowing the variability of inference to be assessed.
 
-For each replicate `i` (where `i` ranges from 1 to 10), four subfolders are created inside `sim_out/`:
+For each replicate `i`, there are four subfolders:
 
 | Subfolder | Rooting | Alignment |
 |---|---|---|
-| `rootedfull`*`i`* | Rooted (outgroup provided) | Full alignment |
-| `rootedthird`*`i`* | Rooted (outgroup provided) | One-third alignment |
-| `unrootedfull`*`i`* | Unrooted (no outgroup) | Full alignment |
-| `unrootedthird`*`i`* | Unrooted (no outgroup) | One-third alignment |
+| `rootedfull<i>/` | Rooted (outgroup provided) | Full |
+| `rootedthird<i>/` | Rooted (outgroup provided) | One-third |
+| `unrootedfull<i>/` | Unrooted (no outgroup) | Full |
+| `unrootedthird<i>/` | Unrooted (no outgroup) | One-third |
 
-For example, `rootedfull3/` contains all outputs from the third replicate of the rooted, full-alignment analysis, and `rootedthird7/` contains all outputs from the seventh replicate of the rooted, one-third-alignment analysis.
+*Example:* `rootedfull3/` holds the third replicate of the rooted, full-alignment analysis; `rootedthird7/` holds the seventh replicate of the rooted, one-third-alignment analysis.
 
-Each subfolder contains the following files for all 20 simulated networks:
+Each subfolder contains, for all 20 simulated networks:
 
-* The Squirrel output files (101 networks each; see below).
-* The consensus networks produced by PhyloSummaries.jl (one per setting; see below).
-* The HMS and HWC consensus networks (one file per simulated network; see below).
-* The processed results used for figures and tables (`.Rdata` files produced by scripts 9–12).
-* The summary spreadsheets (`.xlsx` files produced by script 13).
+- Squirrel output files (101 networks each)
+- PhyloSummaries.jl consensus networks (one file per setting)
+- HMS and HWC consensus networks (one file per simulated network)
+- Processed results used for figures and tables (`.Rdata`, produced by scripts 9–12)
+- Summary spreadsheets (`.xlsx`, produced by script 13)
 
 ### Squirrel Network Inference
 
-Each replicate subfolder contains the Squirrel output for all 20 simulated networks in that setting. For example, in `rootedfull`*`i`*`/`:
+File naming pattern:
 
-* `rooted_network_newick_concatalignRealisticSim_400gts_NetX.txt`
+```
+<rooting>_network_newick_concatalignRealisticSim_400gts_NetX[_third].txt
+```
 
-contains 101 networks:
+- `<rooting>` is `rooted` or `unrooted`
+- `_third` is present only in the one-third subfolders
 
-* The first network is the Squirrel network inferred from the original dataset;
-* The remaining 100 networks correspond to bootstrap replicates.
+Example: `rooted_network_newick_concatalignRealisticSim_400gts_NetX.txt`
 
-In the unrooted subfolders the filenames begin with `unrooted_` instead of `rooted_`, and in the one-third subfolders the filenames include the suffix `_third` before `.txt`.
+Each file contains **101 networks**:
 
-In total, each replicate subfolder contains 20 Squirrel output files (one per simulated network), and there are 40 subfolders across 10 replicates and 4 analysis settings, for a grand total of 800 Squirrel output files.
+1. Line 1 — the Squirrel network inferred from the original data
+2. Lines 2–101 — networks inferred from 100 bootstrap replicates
 
-### Consensus Networks
+Each subfolder has 20 such files (one per simulated network): **40 subfolders × 20 files = 800 Squirrel output files** in total.
 
-Each replicate subfolder contains one consensus file produced by PhyloSummaries.jl for the corresponding analysis setting:
+### PhyloSummaries.jl Consensus Networks
 
-* `rootedfull`*`i`*`/` → `Consensus_outgroup_full.txt`
-* `rootedthird`*`i`*`/` → `Consensus_outgroup_third.txt`
-* `unrootedfull`*`i`*`/` → `Consensus_nooutgroup_full.txt`
-* `unrootedthird`*`i`*`/` → `Consensus_nooutgroup_third.txt`
+| Subfolder | Consensus file |
+|---|---|
+| `rootedfull<i>/` | `Consensus_outgroup_full.txt` |
+| `rootedthird<i>/` | `Consensus_outgroup_third.txt` |
+| `unrootedfull<i>/` | `Consensus_nooutgroup_full.txt` |
+| `unrootedthird<i>/` | `Consensus_nooutgroup_third.txt` |
 
-Each file contains 20 Newick networks, one per line. Line *i* corresponds to the consensus network for simulated network *i*.
+Each file contains 20 Newick networks, one per line; **line `X` is the consensus network for simulated network `X`**.
 
 ### HMS and HWC Consensus Networks
 
-Each replicate subfolder contains the HMS and HWC consensus networks for all 20 simulated networks in that setting. For example, in `rootedfull`*`i`*`/`:
+One file per simulated network and method:
 
-* `HMS_outgroup_full_NetX.txt`
-* `HWC_outgroup_full_NetX.txt`
-
-and in `rootedthird`*`i`*`/`:
-
-* `HMS_outgroup_third_NetX.txt`
-* `HWC_outgroup_third_NetX.txt`
-
-where `X` denotes the simulated network number (1–20).
+| Subfolder | Files |
+|---|---|
+| `rootedfull<i>/` | `HMS_outgroup_full_NetX.txt`, `HWC_outgroup_full_NetX.txt` |
+| `rootedthird<i>/` | `HMS_outgroup_third_NetX.txt`, `HWC_outgroup_third_NetX.txt` |
 
 ---
 
-### 4. `auxfiles/`
+## Consensus Method Implementations
 
-Contains auxiliary files required to generate the simulated datasets.
-
-Although many files are used by the simulation pipeline, the most relevant are:
-
-* `HMS-consensus.pl`: Perl implementation of the HMS consensus method.
-* `HWC-consensus.pl`: Perl implementation of the HWC consensus method.
-* `3SQUIRREL_rooted_full.py`: Python 
-* `4SQUIRREL_rooted_partial.py`: Python 
-* `5SQUIRREL_unrooted_full.py`: Python 
-* `6SQUIRREL_unrooted_partial.py`: Python 
-* `XXX.lisp`: Lisp implementation of the consensus method introduced in this work.
+| File | Description |
+|---|---|
+| `HMS-consensus.pl` | Perl implementation of the HMS consensus method |
+| `HWC-consensus.pl` | Perl implementation of the HWC consensus method |
+| `XXX.lisp` | Lisp implementation of the consensus method introduced in this work |
 
 ---
 
-### 5. `DataforEstimates/`
-
-Contains all files used to estimate the simulation parameters.
-
-These include:
-
-* the sequence alignments for the 10 primate genes,
-* the Paioinini dataset,
-* the IQ-TREE output files,
-* an R script used to process the IQ-TREE output and estimate the parameters used for the simulations.
-
-## Repository Files
-
-The repository also contains 16 numbered files (`0`–`15`), which implement the simulation pipeline and reproduce all analyses presented in the paper.
-
-For all scripts, the only modifications required before execution are to update the file paths so that they match your local installation. Depending on the script, this may include:
-
-* the path to the cloned repository,
-* the path to the IQ-TREE executable,
-* the path to the Julia executable.
-
-### Simulation Pipeline (Files 0–8)
-
-#### `0Sim_Networks.R`
-
-Generates the 20 simulated networks satisfying the conditions described in the paper (i.e., networks containing either at least two cycles of size greater than four or at least four cycles of size greater than three).
-
-This is the most computationally intensive step of the pipeline. Since all simulated networks are already provided in the repository, we do **not** recommend rerunning this script unless new simulations are desired.
-
-#### `1Sim_seq.R`
-
-Simulates, for each network:
-
-* 400 gene trees,
-* the corresponding sequence alignments for each gene, and
-* the concatenated multiple sequence alignment (MSA).
-
-#### `2Subset_seq.R`
-
-Produces the reduced MSAs by retaining only one-third of the sites from each simulated gene.
-
-#### `3SQUIRREL_R.py`
-
-An R wrapper script is provided that automates the 10 repetitions, creating the replicate subfolders, copying the required MSA and sequence-length files into each one, and invoking the appropriate Python script and runing Squirrel on all data types (full and third, and rooted and  unrooted), producing both the inferred network and 100 bootstrap networks. This script is run once per replicate, writing its outputs to the corresponding `rootedfull`*`i`*`/` subfolder.
-The script to run Squirrel are in the auxfiles folder:
-* `3SQUIRREL_rooted_full.py` 
-* `4SQUIRREL_rooted_partial.py`  
-* `5SQUIRREL_unrooted_full.py` 
-* `6SQUIRREL_unrooted_partial.py` 
-These are each executed 10 times (once per replicate). 
-
-#### `4PhyloSummaries.jl`
-
-Julia implementation used to compute the consensus networks introduced in this work from the Squirrel bootstrap networks. This script is run for each of the 40 replicate subfolders (10 replicates × 4 analysis settings), reading the Squirrel bootstrap networks from the subfolder and writing the consensus network file to the same subfolder.
-
-#### `5Huber_HWC_cmdlines.txt`
-
-Contains the terminal commands required to compute the HMS and HWC consensus networks for all simulation settings. These commands are run for each replicate subfolder.
-
-
-### Analysis and Figure Generation (Files 6–12)
-
-Scripts 6–12 are each run across all 10 replicates, reading inputs from and writing outputs to the replicate-specific subfolders. Scripts 10–11 aggregate the results across all 10 replicates, averaging the metrics before generating the final figures.
-
-* `6Process_blobs_outgroup.R` – Processes blob, hybrid, and circular order-based metrics for the rooted analyses, across all 10 replicates.
-* `7Process_blobs_nooutgroup.R` – Processes blob, hybrid, and circular order-based metrics for the unrooted analyses, across all 10 replicates.
-* `8Process_edges_outgroup.R` – Processes edge-based metrics for the rooted analyses, looping over all 10 replicates and writing results to `rootedfull`*`i`*`/` and `rootedthird`*`i`*`/`.
-* `9Process_edges_nooutgroup.R` – Processes edge-based metrics for the unrooted analyses, writing results to `unrootedfull`*`i`*`/` and `unrootedthird`*`i`*`/`.
-* `10CreatePlots.R` – Aggregates results across all 10 replicates, computes averages, and generates the main figures presented in the paper.
-* `11CreatePlots_disttoinput.R` – Aggregates results across all 10 replicates, computes averages, and generates figures summarizing the distance of the inferred consensus networks to the true simulated networks.
-* `12CreateExcels.R` – Compiles the processed results into summary spreadsheets, writing one pair of `.xlsx` files into each of the 40 replicate subfolders.
+ 
