@@ -19,7 +19,7 @@ This repository contains all materials needed to replicate the analyses in *Cons
 ├── networksjl_adjusted      # The 20 model networks used in the simulation study
 ├── HMS-consensus.pl         # HMS consensus method (Perl)
 ├── HWC-consensus.pl         # HWC consensus method (Perl)
-└── XXX.lisp                 # Consensus method introduced in this work (Lisp)
+└── XXX.lisp                 # L1N Consensus method introduced in this work (Lisp)
  
 ```
 
