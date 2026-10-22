@@ -1,4 +1,0 @@
-python3 3SQUIRREL_rooted_full 
-python3 4SQUIRREL_rooted_partial 
-python3 5SQUIRREL_unrooted_full 
-python3 6SQUIRREL_unrooted_partial 
