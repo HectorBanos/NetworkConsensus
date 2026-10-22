@@ -24,13 +24,15 @@ This repository contains all materials needed to replicate the analyses in *Cons
 ```
 
 ---
+## Consensus Method Implementations
 
-## Model Networks
-
-**`networksjl_adjusted`** contains the **20 model (true) networks** used in the simulation study. Gene trees and alignments in `sim_out/` were simulated from these networks, and the `X`-th network in this file corresponds to `NetX` throughout the rest of the repository.
+| File | Description |
+|---|---|
+| `HMS-consensus.pl` | Perl implementation of the HMS consensus method |
+| `HWC-consensus.pl` | Perl implementation of the HWC consensus method |
+| `XXX.lisp` | Lisp implementation of the consensus method introduced in this work |
 
 ---
-
 ## Empirical Data
 
 | Directory | Contents |
@@ -40,6 +42,12 @@ This repository contains all materials needed to replicate the analyses in *Cons
 
 ---
 
+## Model Networks
+
+**`networksjl_adjusted`** contains the **20 model (true) networks** used in the simulation study. Gene trees and alignments in `sim_out/` were simulated from these networks, and the `X`-th network in this file corresponds to `NetX` throughout the rest of the repository.
+
+---
+ 
 ## Simulation Output (`sim_out/`)
 
 Contains all simulated datasets, inferred networks and consensus networks used in the simulation study. Throughout, `X` denotes the simulated network number (1–20).
@@ -119,14 +127,5 @@ One file per simulated network and method:
 
 ---
 
-## Consensus Method Implementations
-
-| File | Description |
-|---|---|
-| `HMS-consensus.pl` | Perl implementation of the HMS consensus method |
-| `HWC-consensus.pl` | Perl implementation of the HWC consensus method |
-| `XXX.lisp` | Lisp implementation of the consensus method introduced in this work |
-
----
 
  
