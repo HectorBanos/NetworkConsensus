@@ -6,22 +6,7 @@ This repository contains all materials needed to replicate the analyses in *Cons
 - the simulation analyses, and
 - the empirical analyses (HIV and *Leopardus*).
 
----
-
-## Table of Contents
-
-- [Repository Structure](#repository-structure)
-- [Model Networks](#model-networks)
-- [Empirical Data](#empirical-data)
-- [Simulation Output (`sim_out/`)](#simulation-output-sim_out)
-  - [Simulated Data](#simulated-data)
-  - [Replicate Subfolders](#replicate-subfolders)
-  - [Squirrel Network Inference](#squirrel-network-inference)
-  - [PhyloSummaries.jl Consensus Networks](#phylosummariesjl-consensus-networks)
-  - [HMS and HWC Consensus Networks](#hms-and-hwc-consensus-networks)
-- [Consensus Method Implementations](#consensus-method-implementations)
-
-
+ 
 ---
 
 ## Repository Structure
