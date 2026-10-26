@@ -78,7 +78,7 @@ open(my $fh, '<', $input) or die "Cannot open $input: $!\n";
 
 my @networks;
 
-<$fh>;  #discard header line if first line corresponds to "true" network and subsequent lines corresponed to bootstrapped networks
+# <$fh>;  #discard header line if first line corresponds to "true" network and subsequent lines corresponed to bootstrapped networks
 
 while (my $line = <$fh>) {
     chomp $line;
