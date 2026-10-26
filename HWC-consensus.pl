@@ -143,7 +143,7 @@ open(my $fh, '<', $input)
 my @networks;  # Array of hashrefs: { newick => ..., weight => ... }
 
 # Discard first line (if it is not part of the network sample, for example, if it is the target network)
-<$fh>;
+# <$fh>;
 
 while (my $line = <$fh>) {
 	chomp $line;
